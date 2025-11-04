@@ -3,7 +3,7 @@ const apiRoutes = require('./routes/api');
 const viewRoutes = require('./routes/view');
 
 const app = express();
-const port = 8080;
+const port = 80;
 
 app.use('/api', apiRoutes);   
 app.use('/', viewRoutes);     
