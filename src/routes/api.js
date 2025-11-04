@@ -1,12 +1,13 @@
 const express = require('express');
-const { pokeneas } = require('../data/pokeneas');
-const { pickRandom } = require('../utils/random');
-
+const os = require('os');
+const pokeneas = require('../data/pokeneas');
 const router = express.Router();
 
-router.get('/pokenea', (req, res) => {
-  const p = pickRandom(pokeneas);
-  const containerId = process.env.HOSTNAME || 'local-dev';
+router.get('/pokenea', (_req, res) => {
+  const number = Math.floor(Math.random() * pokeneas.length);
+  const p = pokeneas[number];
+
+  const containerId = os.hostname(); 
   res.json({
     id: p.id,
     nombre: p.nombre,
